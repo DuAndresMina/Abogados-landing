@@ -1,4 +1,4 @@
-# 🏛️ Página de Aterrizaje para Abogados
+# 🏛️ Abogados landing page
 
 ![GitHub último commit](https://img.shields.io/github/last-commit/DuAndresMina/Abogados-landing)
 ![GitHub lenguaje principal](https://img.shields.io/github/languages/top/DuAndresMina/Abogados-landing)
