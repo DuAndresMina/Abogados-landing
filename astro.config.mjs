@@ -3,5 +3,6 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   integrations: [tailwind()],
-  site: 'https://abogados-landing.github.io'
+  site: 'https://duandresmina.github.io',
+  base: 'Abogados-landing',
 });
