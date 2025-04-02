@@ -27,24 +27,82 @@ const services = [
     ]
   }
 ];
+
+// Helper function para iconos
+const getServiceIcon = (title) => {
+  const icons = {
+    "Representación Legal en Juicios": "⚖️",
+    "Asesoría Legal": "📑",
+    "Negociación": "🤝"
+  };
+  return icons[title] || "⚖️";
+};
 ---
-<section id="servicios" class="py-20 bg-white">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-12 text-primary">Nuestros Servicios</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      {services.map(service => (
-        <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-4 text-primary">{service.title}</h3>
-          <ul class="space-y-2">
-            {service.items.map(item => (
-              <li class="flex items-start">
-                <span class="text-green-500 mr-2">✓</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+
+<section id="servicios" class="relative py-28 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+  <!-- Elemento decorativo de fondo -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl opacity-10">
+    <div class="absolute w-96 h-96 -top-48 -left-48 bg-primary rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="container mx-auto px-4 relative">
+    <!-- Encabezado -->
+    <div class="max-w-2xl mx-auto text-center mb-20">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 relative">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+          Servicios Legales
+        </span>
+        <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+      </h2>
+      <p class="text-xl text-gray-600">Soluciones jurídicas integrales adaptadas a tus necesidades</p>
+    </div>
+
+    <!-- Grid de servicios -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {services.map((service, index) => (
+        <div 
+          key={index}
+          class="group relative p-8 bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+        >
+          <!-- Icono decorativo -->
+          <div class="absolute top-0 right-0 w-24 h-24 opacity-10">
+            <div class="w-full h-full bg-gradient-to-r from-primary to-secondary rounded-bl-2xl"></div>
+          </div>
+          
+          <!-- Contenido -->
+          <div class="relative z-10">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800 flex items-center gap-3">
+              <span class="p-3 bg-primary/10 text-primary rounded-lg">
+                {getServiceIcon(service.title)}
+              </span>
+              {service.title}
+            </h3>
+            <ul class="space-y-4">
+              {service.items.map((item, itemIndex) => (
+                <li 
+                  key={itemIndex}
+                  class="flex items-start pl-4 border-l-2 border-primary/20 hover:border-primary transition-all"
+                >
+                  <span class="mr-3 mt-1 text-primary">▸</span>
+                  <span class="text-gray-600 hover:text-gray-800 transition-colors">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       ))}
+    </div>
+
+    <!-- Llamado a la acción -->
+    <div class="mt-16 text-center">
+      <p class="text-lg text-gray-600 mb-6">¿No encuentras lo que necesitas?</p>
+      <a 
+        href="#contacto" 
+        class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+      >
+        Consulta Personalizada
+        <span class="ml-3 text-xl">→</span>
+      </a>
     </div>
   </div>
 </section>
