@@ -1,12 +1,98 @@
----
----
-<header class="bg-primary text-white py-4 fixed w-full top-0 z-50">
-  <nav class="container mx-auto px-4">
-    <div class="flex justify-between items-center">
-      <a href="#" class="text-2xl font-bold">Bufete Legal</a>
-      <div class="hidden md:flex space-x-6">
-        <a href="#servicios" class="hover:text-gray-300">Servicios</a>
-        <a href="#contacto" class="hover:text-gray-300">Contacto</a>
+<header class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-md transition-all duration-300 shadow-sm hover:shadow-md" x-data="{ isOpen: false, isScrolled: false }" 
+        @scroll.window="isScrolled = window.pageYOffset > 50"
+        :class="{ 'shadow-lg': isScrolled }">
+  <nav class="container mx-auto px-4 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      {/* Logo */}
+      <a href="#" class="flex items-center gap-2 group">
+        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center group-hover:bg-secondary transition-colors">
+          <span class="text-white text-xl font-bold">⚖️</span>
+        </div>
+        <span class="text-2xl font-bold text-gray-800 ml-2">Bufete Legal</span>
+      </a>
+
+      {/* Desktop Navigation */}
+      <div class="hidden lg:flex items-center gap-8">
+        <div class="flex gap-8">
+          {[
+            { name: 'Inicio', href: '#' },
+            { name: 'Servicios', href: '#servicios' },
+            { name: 'Equipo', href: '#equipo' },
+            { name: 'Casos de Éxito', href: '#casos' },
+            { name: 'Contacto', href: '#contacto' }
+          ].map((item, index) => (
+            <a 
+              key={index}
+              href={item.href}
+              class="relative text-gray-600 hover:text-primary px-2 py-1 transition-colors group/nav-item"
+              aria-label={item.name}
+            >
+              {item.name}
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover/nav-item:w-full"></span>
+            </a>
+          ))}
+        </div>
+        <div class="h-6 w-px bg-gray-200 mx-4"></div>
+        <a 
+          href="tel:+34600000000" 
+          class="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors"
+          aria-label="Número de contacto"
+        >
+          <span class="text-xl">📞</span>
+          +34 600 000 000
+        </a>
+      </div>
+
+      {/* Mobile Menu Button */}
+      <button 
+        class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+        @click="isOpen = !isOpen"
+        aria-label="Menú de navegación"
+      >
+        <svg class="w-8 h-8 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                :d="isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'"/>
+        </svg>
+      </button>
+    </div>
+
+    {/* Mobile Navigation */}
+    <div class="lg:hidden relative">
+      <div 
+        class="fixed inset-0 bg-black/50 transition-opacity duration-300"
+        :class="{ 'opacity-0 invisible': !isOpen, 'opacity-100 visible': isOpen }"
+        @click="isOpen = false"
+      ></div>
+      <div 
+        class="fixed top-20 right-0 w-64 h-[calc(100vh-5rem)] bg-white shadow-xl transition-transform duration-300 transform"
+        :class="{ 'translate-x-full': !isOpen, 'translate-x-0': isOpen }"
+      >
+        <div class="flex flex-col p-4 gap-4">
+          {[
+            { name: 'Inicio', href: '#' },
+            { name: 'Servicios', href: '#servicios' },
+            { name: 'Equipo', href: '#equipo' },
+            { name: 'Casos de Éxito', href: '#casos' },
+            { name: 'Contacto', href: '#contacto' }
+          ].map((item, index) => (
+            <a 
+              key={index}
+              href={item.href}
+              class="px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700"
+              @click="isOpen = false"
+            >
+              {item.name}
+            </a>
+          ))}
+          <div class="border-t my-2"></div>
+          <a 
+            href="tel:+34600000000" 
+            class="flex items-center gap-2 px-4 py-3 bg-primary/10 text-primary rounded-lg"
+          >
+            <span>📞</span>
+            +34 600 000 000
+          </a>
+        </div>
       </div>
     </div>
   </nav>
