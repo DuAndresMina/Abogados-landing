@@ -4,40 +4,60 @@ const contactInfo = [
     icon: "📧",
     title: "Email",
     value: "contacto@bufetejuridico.com",
-    link: "mailto:contacto@#####.com"
+    link: "mailto:contacto@bufetejuridico.com",
+    type: "email"
   },
   {
     icon: "📱",
     title: "WhatsApp",
     value: "+34 600 000 000",
-    link: "https://wa.me/#####"
+    link: "https://wa.me/34600000000", // Formato internacional sin espacios
+    type: "phone"
   },
   {
     icon: "📸",
     title: "Instagram",
     value: "@bufetejuridico",
-    link: "https://instagram.com/#####"
+    link: "https://instagram.com/bufetejuridico",
+    type: "social"
   },
   {
     icon: "👥",
     title: "Facebook",
     value: "Bufete Jurídico",
-    link: "https://facebook.com/#####"
+    link: "https://facebook.com/bufetejuridico",
+    type: "social"
   }
-];
+].map(item => ({
+  ...item,
+  link: item.type === 'phone' ? item.link.replace(/[^\d]/g, '') : item.link
+}));
 ---
-<section id="contacto" class="py-20 bg-gray-50">
+<section id="contacto" class="py-20 bg-gradient-to-b from-gray-50 to-white">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-12 text-primary">Contacto</h2>
-    <div class="max-w-3xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-8">
-        {contactInfo.map(item => (
-          <a href={item.link} target="_blank" rel="noopener noreferrer" 
-             class="flex items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
-            <span class="text-4xl mr-4">{item.icon}</span>
-            <div>
-              <h3 class="font-semibold text-primary">{item.title}</h3>
-              <p class="text-gray-600">{item.value}</p>
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-primary relative after:content-[''] after:block after:w-24 after:h-1 after:bg-secondary after:mx-auto after:mt-4">
+      Contáctanos
+    </h2>
+    
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {contactInfo.map((item, index) => (
+          <a
+            key={index}
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex flex-col items-center p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+            aria-label={`Contactar por ${item.title}`}
+          >
+            <div class="w-16 h-16 mb-6 bg-primary rounded-full flex items-center justify-center group-hover:bg-secondary transition-colors">
+              <span class="text-3xl">{item.icon}</span>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">{item.title}</h3>
+              <p class="text-gray-600 hover:text-primary transition-colors">
+                {item.value}
+              </p>
             </div>
           </a>
         ))}
