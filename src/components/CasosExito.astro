@@ -1,0 +1,208 @@
+---
+const casos = [
+  {
+    title: "Restitución de tierras en zona de conflicto",
+    client: "Familia campesina del Urabá antioqueño",
+    category: "Derecho de Restitución",
+    date: "2022",
+    challenge: "Despojo de 50 hectáreas por grupos armados (Ley 1448 de 2011)",
+    solution: "Acompañamiento integral en proceso ante la Unidad de Restitución de Tierras",
+    result: "Sentencia de restitución con medidas de protección de la JEP",
+    stats: {
+      duration: "2 años",
+      success: "100%",
+      extra: "50 ha"
+    },
+    quote: "Recuperamos nuestra tierra y dignidad después de 15 años"
+  },
+  {
+    title: "Defensa en caso de extorsión a empresario",
+    client: "Comerciante de Cali",
+    category: "Derecho Penal",
+    date: "2023",
+    challenge: "Acusación falsa por presunto pago a grupos al margen de la ley (Art. 340 CP)",
+    solution: "Estrategia de descargo con pruebas tecnológicas y peritajes",
+    result: "Absolución total en audiencia de juicio oral",
+    stats: {
+      duration: "8 meses",
+      success: "100%",
+      extra: "0 condena"
+    },
+    quote: "Salvamos el honor familiar y el patrimonio de tres generaciones"
+  },
+  {
+    title: "Tutela por salud no POS",
+    client: "Paciente con cáncer en Bogotá",
+    category: "Derecho a la Salud",
+    date: "2024",
+    challenge: "Negativa de EPS a autorizar tratamiento de alto costo",
+    solution: "Acción de tutela con medida cautelar (Art. 86 Constitución)",
+    result: "Orden judicial para tratamiento inmediato y reposición económica",
+    stats: {
+      duration: "72 horas",
+      success: "100%",
+      extra: "$650 millones COP"
+    },
+    quote: "Gracias al equipo, hoy recibo el tratamiento que salva mi vida"
+  },
+  {
+    title: "Recuperación de plusvalía laboral",
+    client: "Exempleado de multinacional en Medellín",
+    category: "Derecho Laboral",
+    date: "2023",
+    challenge: "Negativa de pago de 8 años de beneficios (Art. 127 CST)",
+    solution: "Demanda laboral con reconstrucción de historial contributivo",
+    result: "Pago íntegro de $280 millones más intereses",
+    stats: {
+      duration: "11 meses",
+      success: "100%",
+      extra: "40% intereses"
+    },
+    quote: "Justicia después de años de lucha contra un gigante corporativo"
+  },
+  {
+    title: "Defensa en licitación pública irregular",
+    client: "Constructora Santandereana",
+    category: "Derecho Administrativo",
+    date: "2022",
+    challenge: "Exclusión injustificada de proceso de contratación estatal",
+    solution: "Impugnación ante la SECOP II con pruebas documentales",
+    result: "Reincorporación y posterior adjudicación de $2.300 millones COP",
+    stats: {
+      duration: "5 meses",
+      success: "100%",
+      extra: "$2.3 mil millones COP"
+    },
+    quote: "Equipo estratégico que conoce el complejo mundo de lo público"
+  },
+  {
+    title: "Protección de marca artesanal",
+    client: "Comunidad indígena Wayúu",
+    category: "Propiedad Intelectual",
+    date: "2024",
+    challenge: "Plagio de diseños tradicionales por firma internacional",
+    solution: "Registro SIC y demanda por violación de derechos ancestrales",
+    result: "Indemnización de $1.200 millones y acuerdo de licencia",
+    stats: {
+      duration: "14 meses",
+      success: "100%",
+      extra: "350 familias beneficiadas"
+    },
+    quote: "Protegieron nuestro legado cultural y ahora recibimos regalías"
+  }
+];
+---
+
+<section id="casos" class="relative py-28 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+  <!-- Elementos decorativos -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl opacity-5">
+    <div class="w-96 h-96 -top-48 -left-48 bg-primary rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <!-- Encabezado -->
+    <div class="max-w-2xl mx-auto text-center mb-20">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 relative">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+          Casos de Éxito
+        </span>
+        <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+      </h2>
+      <p class="text-xl text-gray-600">Resultados tangibles que marcan la diferencia</p>
+    </div>
+
+    <!-- Grid de casos -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {casos.map((caso, index) => (
+        <article 
+          key={index}
+          class="group relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
+        >
+          <!-- Encabezado de la tarjeta -->
+          <div class="p-6 border-b border-gray-100">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                <span class="text-primary text-xl">⚖️</span>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">{caso.category}</p>
+                <p class="font-semibold text-gray-500">{caso.date}</p>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 leading-snug">
+              {caso.title}
+            </h3>
+          </div>
+
+          <!-- Cuerpo de la tarjeta -->
+          <div class="p-6">
+            <div class="space-y-4">
+              <!-- Estadísticas -->
+              <div class="grid grid-cols-3 gap-4 text-center mb-6">
+                <div class="p-2 bg-primary/5 rounded-lg">
+                  <p class="text-2xl font-bold text-primary">{caso.stats.success}</p>
+                  <p class="text-xs text-gray-600">Éxito</p>
+                </div>
+                <div class="p-2 bg-primary/5 rounded-lg">
+                  <p class="text-2xl font-bold text-primary">{caso.stats.duration}</p>
+                  <p class="text-xs text-gray-600">Duración</p>
+                </div>
+                <div class="p-2 bg-primary/5 rounded-lg">
+  <p class="text-xl font-bold text-primary break-words">{caso.stats.extra}</p>
+  <p class="text-xs text-gray-600">
+    {caso.stats.extra.includes("COP") ? "Monto" : "Detalle"}
+  </p>
+</div>
+              </div>
+
+              <!-- Detalles -->
+              <div class="space-y-4">
+                <div>
+                  <label class="text-sm font-semibold text-gray-600">Desafío:</label>
+                  <p class="text-gray-600">{caso.challenge}</p>
+                </div>
+                <div>
+                  <label class="text-sm font-semibold text-gray-600">Solución:</label>
+                  <p class="text-gray-600">{caso.solution}</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <label class="text-sm font-semibold text-green-700">Resultado:</label>
+                  <p class="text-green-700 font-semibold">{caso.result}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pie de tarjeta -->
+          <div class="p-6 bg-gray-50">
+            <blockquote class="italic text-gray-600">
+              " {caso.quote} "
+            </blockquote>
+            <p class="mt-3 text-sm font-semibold text-gray-700">
+              — {caso.client}
+            </p>
+          </div>
+
+          <!-- Badge decorativo -->
+          <div class="absolute top-4 right-4">
+            <span class="px-3 py-1 bg-secondary text-white text-sm rounded-full shadow-sm">
+              Caso Cerrado
+            </span>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- CTA adicional -->
+    <div class="mt-16 text-center">
+      <p class="text-lg text-gray-600 mb-6">¿Listo para escribir tu éxito legal?</p>
+      <a 
+        href="#contacto" 
+        class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+      >
+        Comenzar Ahora
+        <span class="ml-3 text-xl">→</span>
+      </a>
+    </div>
+  </div>
+</section>
