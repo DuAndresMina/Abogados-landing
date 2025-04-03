@@ -10,7 +10,6 @@ Abogados Landing es una elegante y profesional página de aterrizaje diseñada p
 
 🌐 [Ver Demo en Vivo](https://duandresmina.github.io/Abogados-landing/)
 
-![Captura de pantalla de la Página de Aterrizaje para Abogados](public/screenshot.png)
 
 ## ✨ Características
 
